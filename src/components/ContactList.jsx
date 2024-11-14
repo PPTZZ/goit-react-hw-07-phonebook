@@ -2,9 +2,10 @@ import { Collapse} from '@mui/material';
 import Contact from './Contact';
 import { useSelector } from 'react-redux';
 import { TransitionGroup } from 'react-transition-group';
+import { selectContacts } from '../redux/selectors';
 
 const ContactList = () => {
-  const contacts = useSelector(state => state.contacts.value);
+  const contacts = useSelector(selectContacts);
   const searchWord = useSelector(state => state.search.value);
   const filteredContacts = contacts.filter(contact =>
     contact.name.toLowerCase().includes(searchWord.toLowerCase())

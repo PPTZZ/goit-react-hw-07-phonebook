@@ -2,14 +2,13 @@ import { Delete } from '@mui/icons-material';
 import { IconButton, Paper, Stack, Typography } from '@mui/material';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
-import { removeContact } from '../redux/slices/contactsSlice';
 
 const Contact = ({ name, number, id }) => {
   const dispatch = useDispatch();
   const handleDelete = event => {
     const contact = event.currentTarget.closest('[role="presentation"]');
     const contactId = contact ? contact.id : null;
-    dispatch(removeContact(contactId));
+    
   };
   return (
     <Paper elevation={2} id={id} role='presentation' sx={{mt:2}}>

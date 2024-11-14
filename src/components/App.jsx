@@ -1,18 +1,20 @@
 import { useEffect } from 'react';
 import Home from '../pages/Home';
 import Searchbar from './Searchbar';
-import { fetchAPI } from '../services/fetchApi';
+import { fetchAPI } from '../services/fetchAPI';
+import { useDispatch } from 'react-redux';
 
 const App = () => {
-  useEffect(() => {
-    fetchAPI();
-  }, []);
+	const dispatch = useDispatch();
+	useEffect(() => {
+		dispatch(fetchAPI());
+	}, [dispatch]);
 
-  return (
-    <>
-      <Searchbar />
-      <Home />
-    </>
-  );
+	return (
+		<>
+			<Searchbar />
+			<Home />
+		</>
+	);
 };
 export default App;
