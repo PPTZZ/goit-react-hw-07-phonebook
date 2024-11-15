@@ -9,10 +9,11 @@ import {
 import ErrorIcon from '@mui/icons-material/Error';
 import { useDispatch, useSelector } from 'react-redux';
 import { setAlert } from '../redux/slices/alertSlice';
+import { selectAlert } from '../redux/selectors';
 
 const AlertBox = () => {
   const dispatch = useDispatch();
-  const alertState = useSelector(state => state.alert.value);
+  const alertState = useSelector(selectAlert);
   return (
     <Dialog open={alertState}>
       <DialogTitle

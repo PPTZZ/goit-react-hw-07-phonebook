@@ -12,12 +12,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { setAlert } from '../redux/slices/alertSlice';
+import { addContact } from '../services/fetchAPI';
+import { selectContacts } from '../redux/selectors';
 
 const Input = ({ open, toggleSlide }) => {
 	const dispatch = useDispatch();
 	const [name, setName] = useState('');
 	const [number, setNumber] = useState('');
-	const contacts = useSelector((state) => state.myContacts.contacts);
+	const contacts = useSelector(selectContacts);
 
 	const handleName = (e) => {
 		setName(e.target.value);
@@ -35,21 +37,22 @@ const Input = ({ open, toggleSlide }) => {
 			number,
 		};
 		found ? dispatch(setAlert(true)) : dispatch(addContact(item));
+		e.target.reset()
 	};
 	return (
-		<Slide direction='left' in={open} mountOnEnter unmountOnExit>
+		<Slide direction='up' in={open} mountOnEnter unmountOnExit>
 			<Paper
 				elevation={8}
 				sx={{
 					width: '25rem',
-					position: 'absolute',
+					position: 'fixed',
 					right: '20px',
 					bottom: '120px',
 					p: '35px',
 				}}
 			>
 				<IconButton
-					sx={{ position: 'absolute', right: '2px', top: '2px' }}
+					sx={{ position:'absolute', right: '2px', top: '2px' }}
 					onClick={() => toggleSlide((state) => (state = !state))}
 				>
 					<ClearIcon />

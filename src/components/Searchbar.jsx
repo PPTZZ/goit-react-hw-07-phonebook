@@ -1,12 +1,11 @@
 import { AppBar, InputAdornment, TextField, Toolbar } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import { useDispatch } from 'react-redux';
-import { setSearch } from '../redux/slices/searchSlice';
+import { setSearch } from '../redux/slices/myContactsSlice';
 
 const Searchbar = () => {
 	const dispatch = useDispatch();
 	const handleSearchChange = (e) => {
-    
 		dispatch(setSearch(e.target.value));
 	};
 
